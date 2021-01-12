@@ -25,11 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
             .then( data => this.rates = data.rates )
         },
         convert: function(){
+            let result;
+            let total;
+            let amount = this.selectedConversion.amount;
+            let rate = this.selectedConversion.currency.rate;
             if (this.selectedConversion.type === "from") {
-                this.conversionResult = (this.selectedConversion.amount * this.selectedConversion.currency.rate).toFixed(2);
+                total = (amount * rate).toFixed(2);
+                result = `${amount} Euros is ${total} ${this.selectedConversion.currency.key}`;
             } else {
-                this.conversionResult = (this.selectedConversion.amount / this.selectedConversion.currency.rate).toFixed(2);
+                total = (amount / rate).toFixed(2);
+                result = `${amount} ${this.selectedConversion.currency.key} is ${total} Euros`
             }
+            this.conversionResult = result;
             console.log(this.conversionResult);
         }
     }
