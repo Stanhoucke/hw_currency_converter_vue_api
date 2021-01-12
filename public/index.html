@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countries</title>
+    <title>Currency Converter</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bundle.js"></script>
 </head>
 <body>
     <div id="app">
-       Hello world!
+       <form>
+           <label for="conversion-select">Select a conversion: </label>
+           <select name="conversion-select" id="conversion-select" v-model="selectedConversion.type">
+               <option disabled value="">Select a conversion</option>
+               <option value="from">From Euros</option>
+               <option value="to">To Euros</option>
+           </select>
+
+           <label for="conversion-amount"></label>
+           <input type="number" name="conversion-amount" id="conversion-amount" v-model="selectedConversion.amount">
+
+           <label for="currency"></label>
+           <select name="currency" id="currency" v-model="selectedConversion.currency">
+               <option v-for="(rate, key) in rates" :value="{'key': key, 'rate': rate}">{{ key }}</option>
+           </select>
+
+           <input type="submit" value="Convert">
+       </form>
     </div>
 </body>
 </html>
