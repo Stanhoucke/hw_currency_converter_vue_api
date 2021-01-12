@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app">
-       <form>
+       <form v-on:submit.prevent="convert">
            <label for="conversion-select">Select a conversion: </label>
            <select name="conversion-select" id="conversion-select" v-model="selectedConversion.type">
                <option disabled value="">Select a conversion</option>
@@ -18,7 +18,7 @@
            </select>
 
            <label for="conversion-amount"></label>
-           <input type="number" name="conversion-amount" id="conversion-amount" v-model="selectedConversion.amount">
+           <input type="number" name="conversion-amount" id="conversion-amount" v-model.number="selectedConversion.amount">
 
            <label for="currency"></label>
            <select name="currency" id="currency" v-model="selectedConversion.currency">
