@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rate: 0
             }
         },
-        conversionResult: 10
+        conversionResult: null
     },
     mounted: function () {
         this.fetchRates()
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 result = `${amount} ${this.selectedConversion.currency.key} is ${total} Euros`
             }
             this.conversionResult = result;
-            console.log(this.conversionResult);
         }
     }
   })
