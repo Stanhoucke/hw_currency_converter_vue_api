@@ -25,10 +25,10 @@
                </select>
            </div>
 
-           <label for="conversion-amount">to: </label>
+           <label for="conversion-amount">amount: </label>
            <input type="number" name="conversion-amount" id="conversion-amount" v-model.number="selectedConversion.amount">
 
-           <label for="currency"></label>
+           <label for="currency">to:</label>
            <select name="currency" id="currency" v-model="selectedConversion.currency">
                <option v-for="(rate, key) in rates" :value="{'key': key, 'rate': rate}">{{ key }}</option>
            </select>

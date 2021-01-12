@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         conversionResult: null,
         crossCurrency: {
-            selected: false,
             key: "",
             rate: 0
         }
@@ -39,11 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 result = `${amount} Euros is ${total} ${this.selectedConversion.currency.key}`;
             } else if (this.selectedConversion.type === "to") {
                 total = (amount / rate).toFixed(2);
-                result = `${amount} ${this.selectedConversion.currency.key} is ${total} Euros`
+                result = `${amount} ${this.selectedConversion.currency.key} is ${total} Euros`;
             } else {
                 // From currency A to B
                 // Convert A to Euros
+                let toEuros = amount / this.crossCurrency.rate;
                 // Convert Euros to B
+                total = (toEuros * rate).toFixed(2);
+                // assign result
+                result = `${amount} ${this.crossCurrency.key} is ${total} ${this.selectedConversion.currency.key}`;
             }
             this.conversionResult = result;
         }
