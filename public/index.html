@@ -15,9 +15,17 @@
                <option disabled value="">Select a conversion</option>
                <option value="from">From Euros</option>
                <option value="to">To Euros</option>
+               <option value="cross">Cross-currency</option>
            </select>
+            
+           <div v-if="selectedConversion.type === 'cross'">
+               <label for="cross-currency">from: </label>
+               <select name="cross-currency" id="cross-currency" v-model="crossCurrency">
+                   <option v-for="(rate, key) in rates" :value="{'key': key, 'rate': rate}">{{ key }}</option>
+               </select>
+           </div>
 
-           <label for="conversion-amount"></label>
+           <label for="conversion-amount">to: </label>
            <input type="number" name="conversion-amount" id="conversion-amount" v-model.number="selectedConversion.amount">
 
            <label for="currency"></label>
