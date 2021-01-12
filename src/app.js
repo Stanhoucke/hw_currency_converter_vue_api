@@ -1,5 +1,10 @@
 import Vue from 'vue';
 
+Vue.filter('instructions', function(value){
+    value = "Click convert when you are ready to convert currencies.";
+    return value;
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#app',
